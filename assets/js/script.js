@@ -1,6 +1,7 @@
 // settings
 const storageKey = "highscores";
 const correctAnswerBonus = 10;
+var time = 60;
 
 
 // DOM elements
@@ -33,7 +34,7 @@ function startGame(){
   	setupQuestions();
   	//setup score
   	currentScore = 0;
-  	//start timer
+  	startTimer();
   	//start quiz manager
 }
 function endGame(){
@@ -43,12 +44,19 @@ function endGame(){
 
 
 // timer
-/*
-	start timer
-    	-- interval, every 1000ms
-        	-- decrement timer
-    end timer
-*/
+function startTimer() {
+    var timer =  setInterval(function(){
+    time -= 1;
+    timerEl.innerHTML = `${time} seconds left`;
+    console.log(time + "seconds have passed");
+    if (time >= 60){
+        clearInterval(timer);
+    }
+}, 1000);
+}
+
+
+
 
 
 // questions & answers gameplay
