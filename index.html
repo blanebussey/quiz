@@ -8,8 +8,7 @@ THEN time is subtracted from the clock
 WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
-THEN I can save my initials and score-->
-
+THEN I can save my initials and score--> 
 
 
 <!DOCTYPE html>
@@ -21,23 +20,28 @@ THEN I can save my initials and score-->
     <title>Quiz Show</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
-    <p id="timer"></p>
-    <div class="container">
-        <div id="question-box" class="hide">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
-                <button class="btn">A</button>
-                <button class="btn">B</button>
-                <button class="btn">C</button>
-                <button class="btn">D</button>
-            </div>
-        </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">Start</button>
-            <button id="next-btn" class="next-btn btn hide">Next</button>
-        </div>
-    </div>
+
+
+<body class="pregame">
+    <header>
+        <h1>Quiz</h1>
+        <p>Time Remaining: <span id="timer"></span></p>
+    </header> 
+    <section id="start">
+        <button>Play</button>
+        <div id="ledger"></div>
+    </section>
+    <section id="questions"></section>
+    <section id="high-scores">
+        <h2>Your Score Is <span id="score"></span></h2>
+      <input>  
+        <p>Enter your name</p>
+        <button>Submit</button>
+
+    </section>
+
+ 
+ 
     <script src="assets/js/script.js"></script>
 </body>
 </html>
