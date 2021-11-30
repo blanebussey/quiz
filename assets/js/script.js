@@ -7,7 +7,7 @@ var time = 60;
 // DOM elements
 const timerEl = document.getElementById("timer");
 const questionsEl = document.getElementById("questions");
-const legerEl = document.getElementById("leger");
+const ledgerEl = document.getElementById("ledger");
 const initialsEl = document.querySelector("#high-scores input");
 const scoreEl = document.getElementById("score");
 
@@ -106,6 +106,7 @@ function answerQuestion(e){
 // scores
 function score(num){
 	currentScore += num;
+    setStorage()
 }
 function showScore(){
 	scoreEl.textContent = currentScore;
@@ -178,3 +179,4 @@ const questions = [
         ] 
     }
 ]
+
