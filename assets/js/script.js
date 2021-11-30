@@ -42,22 +42,17 @@ function endGame(){
   	showScore();
 }
 
-
 // timer
 function startTimer() {
     var timer =  setInterval(function(){
     time -= 1;
     timerEl.innerHTML = `${time} seconds left`;
-    console.log(time + "seconds have passed");
-    if (time >= 60){
+    if (time <= 0){
         clearInterval(timer);
+        endGame();
     }
 }, 1000);
 }
-
-
-
-
 
 // questions & answers gameplay
 function setupQuestions(){
@@ -99,7 +94,9 @@ function answerQuestion(e){
   	//correct answer...increase score
   	if (isCorrect) score(correctAnswerBonus);
   	//incorrect answer...decrease time remaining
-  	else {}
+  	else {
+          time -= 5
+      }
   	//either way, go to the next question
     currentQuestions.shift(); //remove first question
   	loadQuestion();
