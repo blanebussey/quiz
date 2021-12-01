@@ -10,6 +10,8 @@ const questionsEl = document.getElementById("questions");
 const ledgerEl = document.getElementById("ledger");
 const initialsEl = document.querySelector("#high-scores input");
 const scoreEl = document.getElementById("score");
+const username = document.getElementById("username");
+const scoreBtn = document.getElementById("scoreButton");
 
 
 // app state variables
@@ -40,6 +42,7 @@ function startGame(){
 function endGame(){
 	document.body.className = "postgame";
   	showScore();
+    setStorage(currentScore, username.value)
 }
 
 // timer
@@ -106,7 +109,6 @@ function answerQuestion(e){
 // scores
 function score(num){
 	currentScore += num;
-    setStorage()
 }
 function showScore(){
 	scoreEl.textContent = currentScore;
@@ -123,8 +125,8 @@ function addHighScore() {
 // data storage
 // store data as a string to localStorage
 // retrieve data as an object from localStorage
-function setStorage(data){
-	localStorage.setItem(storageKey, JSON.stringify(data));
+function setStorage(data, name){
+	localStorage.setItem(storageKey, JSON.stringify(data, name));
 }
 function getStorage(){
 	const data = localStorage.getItem(storageKey);
