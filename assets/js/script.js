@@ -1,7 +1,7 @@
 // settings
 const storageKey = "highscores";
 const correctAnswerBonus = 10;
-var time = 60;
+
 
 
 // DOM elements
@@ -10,14 +10,15 @@ const questionsEl = document.getElementById("questions");
 const ledgerEl = document.getElementById("ledger");
 const initialsEl = document.querySelector("#high-scores input");
 const scoreEl = document.getElementById("score");
-const username = document.getElementById("username");
-const scoreBtn = document.getElementById("scoreButton");
+
+
 
 
 // app state variables
 var currentQuestions;
 var currentScore;
-
+var time = 60;
+var totalScores = [];
 
 // init (performed once when the page loads)
 // often used for adding event listeners
@@ -42,8 +43,8 @@ function startGame(){
 function endGame(){
 	document.body.className = "postgame";
   	showScore();
-    setStorage(currentScore, username.value)
 }
+
 
 // timer
 function startTimer() {
@@ -118,6 +119,30 @@ function showScore(){
 // high scores
 function addHighScore() {
 	document.body.className = "pregame";
+    totalScores = getStorage();
+   // create object from data
+   var username = initialsEl.value;
+   var pair = {
+       username, currentScore 
+   };
+   // push new object into array 
+   totalScores.push(pair);
+   setStorage(totalScores);
+   displayHighScores();
+}
+
+function displayHighScores() {
+    totalScores = getStorage()
+    var html = "<h3> High Scores</h3><ol>";
+    for (let pair of totalScores) {
+    html += `<li>${pair.username}: ${pair.currentScore}</li>`;
+}
+
+    html += "</o>";
+
+    ledgerEl.innerHTML = html;
+
+
 }
 
 
@@ -125,9 +150,10 @@ function addHighScore() {
 // data storage
 // store data as a string to localStorage
 // retrieve data as an object from localStorage
-function setStorage(data, name){
-	localStorage.setItem(storageKey, JSON.stringify(data, name));
+function setStorage(data){
+	localStorage.setItem(storageKey, JSON.stringify(data));
 }
+
 function getStorage(){
 	const data = localStorage.getItem(storageKey);
   	if (!data) return []; //nothing in storage, return empty array
