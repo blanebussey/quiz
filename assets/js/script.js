@@ -127,7 +127,7 @@ function addHighScore() {
    };
    // push new object into array 
    totalScores.push(pair);
-   totalScores.sort((a,b) => b.pair - a.pair);
+   totalScores.sort((a,b) => b.currentScore - a.currentScore);
    totalScores.splice(6);
    setStorage(totalScores);
    displayHighScores();
