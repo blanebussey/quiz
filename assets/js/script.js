@@ -127,6 +127,8 @@ function addHighScore() {
    };
    // push new object into array 
    totalScores.push(pair);
+   totalScores.sort((a,b) => b.pair - a.pair);
+   totalScores.splice(6);
    setStorage(totalScores);
    displayHighScores();
 }
@@ -137,11 +139,9 @@ function displayHighScores() {
     for (let pair of totalScores) {
     html += `<li>${pair.username}: ${pair.currentScore}</li>`;
 }
-
     html += "</o>";
-
+    
     ledgerEl.innerHTML = html;
-
 
 }
 

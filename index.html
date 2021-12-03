@@ -20,27 +20,26 @@ THEN I can save my initials and score-->
     <title>Quiz Show</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-
-
 <body class="pregame">
+    <div class="container">
+    <section class="box-1"></section>    
     <header>
         <h1>Quiz</h1>
-        <p>Time Remaining: <span id="timer"></span></p>
+        <p id="remaining">Time Remaining: <span id="timer"></span></p>
     </header> 
-    <section id="start">
+    <section id="start" class="box-2">
         <button>Play</button>
         <div id="ledger"></div>
     </section>
-    <section id="questions"></section>
-    <section id="high-scores">
+    <section id="questions" class="box-3"></section>
+    <section id="high-scores" class="box-4">
         <h2>Your Score Is <span id="score"></span></h2>
       <input>  
         <p>Enter your name</p>
         <button>Submit</button>
-
     </section>
 
- 
+    </div> 
  
     <script src="assets/js/script.js"></script>
 </body>

@@ -11,3 +11,21 @@ section {
     display: block;
 }
 
+header {
+    font-family: fantasy;
+}
+
+button {
+    border-radius: 4px;
+    color: grey;
+    background-color: transparent; 
+    border: 1px solid;
+}
+
+body {
+    display: grid;
+    margin: 0;
+    height: 100vh;
+    place-items: center center;
+}
+
